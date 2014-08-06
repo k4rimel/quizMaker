@@ -14,6 +14,7 @@
 
 	<!-- CONTROLLERS -->
 	<script type="text/javascript" src="src/controllers/dashboardController.js"></script>
+	<script type="text/javascript" src="src/controllers/quizEditorController.js"></script>
 
 	<!-- MODELS -->
 	<script type="text/javascript" src="src/models/dashboardModel.js"></script>

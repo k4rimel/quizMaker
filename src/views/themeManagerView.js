@@ -33,11 +33,8 @@ ThemeManagerView.prototype.output = function () {
 
 ThemeManagerView.prototype.render = function () {
 	var outputValue = this.output();
-	var container = $(".mainContainer");
 	container.html(outputValue);
 	this.setHandlers();
-	container.removeClass('left');
-	container.addClass('center transition');
 };
 
 ThemeManagerView.prototype.setHandlers = function() {

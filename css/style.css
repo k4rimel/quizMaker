@@ -67,9 +67,12 @@ body {
 	padding-bottom:  0.5em;
 	border-bottom: 1px solid #ccc;
 }
+.themeSectionContent {
+	padding: 2em;
+}
 .title {
 	font-size: 1.7em;
-	color:#aaa;
+	color:#666;
 }
 .s1{
 	width: 10%;
@@ -102,11 +105,12 @@ body {
 	cursor: pointer;
 	color: #4e8abe;
 	font-size: 1.3em;
+	font-family: 'robotoBold';
 }
 .link:hover {
-	font-family: 'robotoBold';
 	color: #316FA7;
+	text-decoration: underline;
 }
 .themeListItem {
-	padding: .5em 0em;
+	padding: 0.2em 0em;
 }

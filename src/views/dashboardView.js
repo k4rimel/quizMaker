@@ -42,6 +42,10 @@ DashboardView.prototype.render = function () {
 
 DashboardView.prototype.setHandlers = function() {
 	var that = this;
+	$(".themeListItem").click(function(event) {
+		var quizzes = $(this).attr('data-quizzes').split(",");
+		that.displayQuizzes(quizzes);
+	});
 }
 DashboardView.prototype.displayQuizzes = function(quizzes) {
 	Core.go('QuizEditor', quizzes);
