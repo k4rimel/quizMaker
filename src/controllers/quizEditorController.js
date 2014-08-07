@@ -7,13 +7,10 @@
     var that                = this;
     that.container          = $(".quizContainer");
 
+    that.theme              = null;
+    that.quizList           = [];
     that.questionContainer  = null;
-    that.quiz               = [];
-    that.currentIndex       = 0;
-    that.currentQuestion    = null;
-    that.correctAnswers     = 0;
-    that.answered           = false;
-    that.transition         = 'right';
+    
 
         /*TODO : HANDLE MCQ/UCQ (quiz type) */
         if(QuizEditor.prototype.initializer === true) return;

@@ -45,6 +45,11 @@ DashboardView.prototype.setHandlers = function() {
 	$(".themeListItem").click(function(event) {
 		var quizzes = $(this).attr('data-quizzes').split(",");
 		that.displayQuizzes(quizzes);
+	});	
+	// TODO : CORE.GO('THEME EDITOR') ETC.
+	$(".addThemeButton").click(function(event) {
+		var quizzes = $(this).attr('data-quizzes').split(",");
+		that.displayQuizzes(quizzes);
 	});
 }
 DashboardView.prototype.displayQuizzes = function(quizzes) {

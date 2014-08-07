@@ -118,7 +118,7 @@ body {
 
 
 
-.editor > textarea {
+/*.editor > textarea {
 	padding: 0;
 	width: 100%;
 	line-height: inherit;
@@ -135,8 +135,8 @@ body {
 	color: inherit;
 	font-family: "ff-tisa-web-pro", Georgia, serif;
 	color: #646665;
-}
-.editor > textarea:hover, textarea:focus {
+}*/
+.titleTxt:hover, .titleTxt:focus {
 	border-bottom: 1px dotted #aaa;
 }
 textarea {
@@ -157,9 +157,6 @@ textarea {
 	font-family: "ff-tisa-web-pro", Georgia, serif;
 	color: #646665;
 }
-textarea:hover, textarea:focus {
-	border-bottom: 1px dotted #aaa;
-}
 .choices {
 	padding: 5px 0 0 8px;
 	width: 100%;
@@ -172,5 +169,4 @@ textarea:hover, textarea:focus {
 	line-height: 20px;
 }
 .choices:hover, .choices:focus{
-	
 }
