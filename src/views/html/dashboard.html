@@ -4,6 +4,14 @@
 			<div class="themeSectionTitle title s8 col">Themes</div>
 			<div class="addThemeButton s2 col button">New Theme</div>
 		</div>
+			<h3>
+				<textarea class="title" maxlength="255" name="" placeholder="Untitled Section" rows="1" style="overflow: hidden; word-wrap: break-word; resize: none; height: 34px;"></textarea>
+			</h3>
+
+			<h3>
+				<textarea class="choices" name="" style="overflow: hidden; word-wrap: break-word; resize: none; height: 148px;"></textarea>
+			</h3>
+
 		<div class="themeSectionContent">
 			{{~it.themes :value:index}}
 				<div class="themeListItem" data-quizzes='{{=value.Theme.quizzes}}'>

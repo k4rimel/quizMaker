@@ -114,3 +114,63 @@ body {
 .themeListItem {
 	padding: 0.2em 0em;
 }
+
+
+
+
+.editor > textarea {
+	padding: 0;
+	width: 100%;
+	line-height: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	font-style: inherit;
+	font-family: inherit;
+	outline: none;
+	border: none;
+	border-radius: 0;
+	background: transparent;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	color: inherit;
+	font-family: "ff-tisa-web-pro", Georgia, serif;
+	color: #646665;
+}
+.editor > textarea:hover, textarea:focus {
+	border-bottom: 1px dotted #aaa;
+}
+textarea {
+	padding: 0;
+	width: 100%;
+	line-height: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	font-style: inherit;
+	font-family: inherit;
+	outline: none;
+	border: none;
+	border-radius: 0;
+	background: transparent;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	color: inherit;
+	font-family: "ff-tisa-web-pro", Georgia, serif;
+	color: #646665;
+}
+textarea:hover, textarea:focus {
+	border-bottom: 1px dotted #aaa;
+}
+.choices {
+	padding: 5px 0 0 8px;
+	width: 100%;
+	height: 148px;
+	background: #fafafa;
+	border: dashed 1px #dfdfdf;
+	border-bottom: none;
+	font-size: 14px;
+	color: #141414;
+	line-height: 20px;
+}
+.choices:hover, .choices:focus{
+	
+}
