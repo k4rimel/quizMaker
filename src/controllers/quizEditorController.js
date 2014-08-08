@@ -12,23 +12,20 @@
     that.questionContainer  = null;
     
 
-        /*TODO : HANDLE MCQ/UCQ (quiz type) */
         if(QuizEditor.prototype.initializer === true) return;
 
         QuizEditor.prototype.initializer = true;
 
-        QuizEditor.prototype.load = function(quiz)
+        QuizEditor.prototype.load = function(quizzes)
         {
             if(typeof(quiz) !== undefined) {
-                that.quiz = quiz;
+                that.quizList = quizzes;
                 that.launch();
             }
         };
         QuizEditor.prototype.launch = function()
         {
-            that.currentIndex = 0;
-            that.currentQuestion = that.quiz.Questions[that.currentIndex];
-            that.displayQuiz();
+            that.displayEditor();
         };
         QuizEditor.prototype.hide = function()
         {
@@ -43,7 +40,7 @@
             that.container.removeClass('right');
             that.container.addClass('center transition');
         }
-        QuizEditor.prototype.displayQuiz = function() {
+        QuizEditor.prototype.displayEditor = function() {
             that.render(that.container, that.getQuizTemplate(), function() {
                 that.questionContainer = $("#questionContainer");
                 that.displayQue();
