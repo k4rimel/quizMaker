@@ -45,6 +45,21 @@ body {
 	display: block;
 	padding: 1.25em 2.25em;
 }
+.editorFrame {
+	width: 50em;
+	position: absolute;
+	z-index: 10;
+	background-color: #ccc;
+}
+.quizListPanel {
+	height: 100%;
+	width: 8em;
+	display: inline-block;
+}
+.editSection {
+	height: 100%;
+	display: inline-block;
+}
 .col {
 	display: inline-block;
 }

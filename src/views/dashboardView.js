@@ -42,14 +42,13 @@ DashboardView.prototype.render = function () {
 
 DashboardView.prototype.setHandlers = function() {
 	var that = this;
+	//TODO : PASS OBJECT {THEME + QUIZZES}
 	$(".themeListItem").click(function(event) {
 		var quizzes = $(this).attr('data-quizzes').split(",");
 		that.displayQuizzes(quizzes);
-	});	
-	// TODO : CORE.GO('THEME EDITOR') ETC.
+	});
 	$(".addThemeButton").click(function(event) {
-		var quizzes = $(this).attr('data-quizzes').split(",");
-		that.displayQuizzes(quizzes);
+		// TODO : CORE.GO('THEME EDITOR') ETC.
 	});
 }
 DashboardView.prototype.displayQuizzes = function(quizzes) {
