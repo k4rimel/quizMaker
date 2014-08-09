@@ -8,12 +8,12 @@ var DashboardModel = function (data) {
 	this.getTheme = function(id) {
 		if(this.themes.length > 1) {
 			for (var i = 0; i < this.themes.length; i++) {
-				if(this.themes[i].Quiz.id === id) {
-					return this.themes[i].Quiz;
+				if(this.themes[i].Theme.id === id) {
+					return this.themes[i].Theme;
 				}
 			};
 		} else {
-			return this.themes[0].Quiz;
+			return this.themes[0].Theme;
 		}
 	}
 	return this;
@@ -38,7 +38,6 @@ DashboardModel.getData = function (args) {
 	  		dataType: 'json',
 	  		async: false,
 	  		success: function(data){
-	  			console.log(data);
 			 	outputData.push(data);
 	  		},
 	  		error: function(xhr, type){

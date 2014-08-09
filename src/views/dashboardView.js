@@ -8,7 +8,6 @@ var DashboardView = function ( model ) {
 DashboardView.prototype.output = function () {
 	var instance = this;
 	var modelData = instance.model;
-	console.log(modelData);
 	var htmlData;
 	var template;
 	var tempFunc;
@@ -44,13 +43,14 @@ DashboardView.prototype.setHandlers = function() {
 	var that = this;
 	//TODO : PASS OBJECT {THEME + QUIZZES}
 	$(".themeListItem").click(function(event) {
-		var quizzes = $(this).attr('data-quizzes').split(",");
-		that.displayQuizzes(quizzes);
+		var id = $(this).attr('data-id');
+		var theme = that.model.getTheme(id);
+		that.displayQuizzes(theme);
 	});
 	$(".addThemeButton").click(function(event) {
 		// TODO : CORE.GO('THEME EDITOR') ETC.
 	});
 }
-DashboardView.prototype.displayQuizzes = function(quizzes) {
-	Core.go('QuizEditor', quizzes);
+DashboardView.prototype.displayQuizzes = function(theme) {
+	Core.go('QuizEditor', theme);
 }

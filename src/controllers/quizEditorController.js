@@ -5,7 +5,7 @@
     function QuizEditor()
     {
     var that                = this;
-    that.container          = $(".editorContainer");
+    that.container          = null;
     that.leftPanelContainer = null;
 
     that.selectedQuiz       = null;
@@ -17,15 +17,39 @@
 
         QuizEditor.prototype.initializer = true;
 
-        QuizEditor.prototype.load = function(quizzes)
+        QuizEditor.prototype.load = function(theme)
         {
             if(typeof(quiz) !== undefined) {
-                that.quizList = quizzes;
+                that.setQuizList(theme.quizzes);
                 that.launch();
             }
         };
+
+        QuizEditor.prototype.setQuizList = function(names, cb) {
+            var fileNames = names.split(',');
+            for (var i = fileNames.length - 1; i >= 0; i--) {
+                that.quizList.push(that.getQuiz(fileNames[i]));
+            };
+        };
+        QuizEditor.prototype.getQuiz = function(fileName) {
+            var quiz;
+                $.ajax({
+                    type: 'GET',
+                    url: 'data/'+fileName+'.json',
+                    dataType: 'json',
+                    async: false,
+                    success: function(data){
+                        quiz = data;
+                    },
+                    error: function(xhr, type){
+                        console.log("error");
+                    }
+                });
+            return quiz;
+        }
         QuizEditor.prototype.launch = function()
         {
+            that.container = $(".mainContainer");
             that.displayEditor();
         };
         QuizEditor.prototype.hide = function()
@@ -37,7 +61,7 @@
             that.container.removeClass('hidden');
         }
         QuizEditor.prototype.displayEditor = function() {
-            that.render(that.container, that.getEditorTemplate(), function() {
+            that.render($('.editorContainer'), that.getEditorTemplate(), function() {
                 that.leftPanelContainer = $(".editSection");
                 that.displayLeftPanel();
                 that.setMainHandlers();
@@ -52,15 +76,13 @@
         };
         QuizEditor.prototype.render = function(target, data, cb)
         {
-            console.log(target);
-            console.debug(data);
             target.html(data);
             if(typeof(cb) !== 'undefined') {
                 cb();
             }
         };
         QuizEditor.prototype.getEditorTemplate = function() {
-            var modelData = that.theme;
+            var modelData = that.quizList;
             var htmlData;
             var template;
             var tempFunc;

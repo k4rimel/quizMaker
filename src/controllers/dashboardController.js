@@ -37,7 +37,7 @@ DashboardController.prototype.loadThemes = function () {
 	view.render();
 };
 DashboardController.prototype.destroy = function () {
-
+	this.container.addClass('hidden');
 };
 Core.register('Dashboard', function()
 {

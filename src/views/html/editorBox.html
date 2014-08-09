@@ -1,4 +1,13 @@
 <div class="editorFrame box">
-	<div class="quizListPanel"></div>
+	<div class="quizListPanel">
+	{{~it :value:index}}
+		<div class='quizListItem'>
+			<div class="quiz">
+				<div class="quizLink" data-quiz-id="{{=value.Quiz.id}}">{{=value.Quiz.title}}</div>
+				<div class="questionNB">{{=value.Quiz.Questions.length}} {{=(value.Quiz.Questions.length === 1 ? "Question" : "Questions")}}</div>
+			</div>
+		</div>
+	{{~}}
+	</div>
 	<div class="editSection"></div>
 </div>
