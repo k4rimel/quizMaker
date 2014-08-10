@@ -160,10 +160,20 @@
         QuizEditor.prototype.setMainHandlers = function()
         {
             $('.quizListItem').click(function(event) {
+                $('.quizListItem').removeClass('selected');
+                $(this).addClass('selected');
                 var quizId = $(this).children('.quiz').children('.quizLink').attr('data-quiz-id');
                 that.selectedQuiz = that.quizList[quizId];
                 that.displayQuestions(that.rightPanelContainer);
             });
+        };
+        QuizEditor.prototype.updateList = function()
+        {
+
+        }        
+        QuizEditor.prototype.saveFile = function()
+        {
+
         };
         QuizEditor.prototype.unsetHandlers = function()
         {

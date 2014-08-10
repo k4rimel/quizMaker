@@ -16,13 +16,15 @@ DashboardController.prototype.init = function () {
 
 DashboardController.prototype.getThemeList = function () {
 	var themeFiles;
+	var data = {"reqtype":"read"};
 	$.ajax({
   		type: 'GET',
   		url: 'server/app.php',
   		async: false,
+  		data: data,
   		success: function(response){
+  			console.log(response);
 		 	themeFiles = JSON.parse(response);
-
   		},
   		error: function(xhr, type){
   			console.log("error");

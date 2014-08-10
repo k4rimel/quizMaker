@@ -1,19 +1,19 @@
 <div class="quizTitleContainer">
 	<h1>
-		<textarea class="titleTxt" maxlength="255" name="" placeholder="" rows="1" style="overflow: hidden; word-wrap: break-word; resize: none; height: 42px;">{{=it.Quiz.title}}</textarea>
+		<textarea class="titleTxt input" maxlength="255" name="" placeholder="" rows="1" style="overflow: hidden; word-wrap: break-word; resize: none; height: 42px;">{{=it.Quiz.title}}</textarea>
 	</h1>
 </div>
 {{~it.Quiz.Questions :value:index}}
 	<div class="question">
 		<h2>
-			<textarea class="titleTxt" maxlength="255" name="" placeholder="" rows="1" style="overflow: hidden; word-wrap: break-word; resize: none; height: 34px;">
+			<textarea class="titleTxt input" maxlength="255" name="" placeholder="" rows="1" style="overflow: hidden; word-wrap: break-word; resize: none; height: 34px;">
 				{{=value.label}}
 			</textarea>
 		</h2>
 		<div class="props">
 				<div class="proposition">
 					<h3>
-						<textarea class="choices" name="" style="overflow: hidden; word-wrap: break-word; resize: none; height: 148px;">
+						<textarea class="choices input" name="" style="overflow: hidden; word-wrap: break-word; resize: none; height: 148px;">
 							{{=value.propositions.replace(/,/g , "\n")}}
 						</textarea>
 					</h3>

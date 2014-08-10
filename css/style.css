@@ -200,19 +200,34 @@ textarea {
 	font-family: "roboto";
 	color: #646665;
 }
+textarea:focus {
+	background-color: #fff;
+}
 .choices {
 	padding: 5px 0 0 8px;
 	width: 90%;
 	height: 148px;
 	background: #fafafa;
 	border: dashed 1px #dfdfdf;
-	border-bottom: none;
 	font-size: 14px;
 	color: #939393;
 	line-height: 20px;
 }
-.choices:hover, .choices:focus{
+.choices:focus{
+	border: 1px solid #aaa;
+	background-color: #fff;
 }
 .hidden {
 	display: none;
+}
+.selected  {
+	background-color: #689DF6;
+	color:#fff;
+}
+.selected *{
+	background-color: #689DF6;
+	color:#fff;
+}
+.selected:hover{
+	background-color: #689DF6;
 }
