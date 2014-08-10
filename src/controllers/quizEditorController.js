@@ -18,7 +18,8 @@
 
         QuizEditor.prototype.load = function(theme)
         {
-            if(typeof(quiz) !== undefined) {
+            if(typeof(theme) !== undefined) {
+                that.theme = theme;
                 that.setQuizList(theme.quizzes);
                 that.launch();
             }
