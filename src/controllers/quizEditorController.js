@@ -69,17 +69,9 @@
         };
         QuizEditor.prototype.displayQuestions = function(target)
         {
-            that.render(that.rightPanelContainer, that.getLeftPanelTemplate(), function() {
+            that.render(that.rightPanelContainer, that.getRightPanelTemplate(), function() {
                 that.setRightPanelHandlers();
-                // that.displayPropositions();
             });
-        };
-        QuizEditor.prototype.displayPropositions = function() {
-            that.render(that.rightPanelContainer, that.getLeftPanelTemplate(), function() {
-                that.setRightPanelHandlers();
-                that.displayPropositions();
-            });
-            that.show();
         };
         QuizEditor.prototype.render = function(target, data, cb)
         {
@@ -120,8 +112,9 @@
             });
             return html;
         };
-        QuizEditor.prototype.getLeftPanelTemplate = function() {
+        QuizEditor.prototype.getRightPanelTemplate = function() {
             var modelData = that.selectedQuiz;
+            console.log(that.selectedQuiz);
             var htmlData;
             var template;
             var tempFunc;

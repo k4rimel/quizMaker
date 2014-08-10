@@ -57,9 +57,9 @@ body {
 	min-height: 25em;
 	padding: 1em 0.5em;
 	background-color: #fafafa;
+	overflow:auto;
 }
 .quizListPanel {
-	height: 23em;
 	width: 8em;
 	display: inline-block;
 	/*overflow-y: scroll;*/
@@ -80,11 +80,13 @@ body {
 	background-color: #e0e0e0;
 }
 .editSection {
-	min-height: 20em;
+	min-height: 25em;
 	display: block;
 	float: right;
-	width: 33em;
+	background-color: #f2f2f2;
 	/*padding: 1em;*/
+	width: 36em;
+	text-align: center;
 }
 .col {
 	display: inline-block;
@@ -205,7 +207,7 @@ textarea {
 	border: dashed 1px #dfdfdf;
 	border-bottom: none;
 	font-size: 14px;
-	color: #141414;
+	color: #939393;
 	line-height: 20px;
 }
 .choices:hover, .choices:focus{
