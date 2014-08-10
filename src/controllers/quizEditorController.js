@@ -182,7 +182,7 @@
         QuizEditor.prototype.destroy = function()
         {
             that.unsetHandlers();
-            that.container.empty();
+            $('.editorContainer').empty();
             that.hide();
         };
     }
