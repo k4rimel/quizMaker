@@ -2,6 +2,6 @@
 	"Theme":{
 		"label": "Theme 1",
 		"id": "1",
-		"quizzes": "quizA"
+		"quizzes": "quizA,quizB"
 	}
 }
