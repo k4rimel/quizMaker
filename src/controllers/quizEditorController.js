@@ -80,14 +80,26 @@
                 cb();
             }
         };
-        QuizEditor.prototype.getEditorTemplate = function() {
+        QuizEditor.prototype.orderQuizzes = function() {
             var quizObjects = [];
-
             Object.keys(that.quizList).forEach(function (key) {
-               quizObjects.push(that.quizList[key]);
+                for (var i = that.quizList[key].Quiz.Questions.length - 1; i >= 0; i--) {
+                    var props = that.quizList[key].Quiz.Questions[i].propositions.split(',');
+                    for (var j = props.length - 1; j >= 0; j--) {
+                        if(props[j] == that.quizList[key].Quiz.Questions[i].correctAnswer) {
+                            props[j] = "*"+props[j];
+                        }
+                    };
+                    that.quizList[key].Quiz.Questions[i].propositions = props.join(",");
+                };
+                quizObjects.push(that.quizList[key]);
             });
+            return quizObjects;
+        };
+        QuizEditor.prototype.getEditorTemplate = function() {
+            var quizListData = that.orderQuizzes();
 
-            var modelData = quizObjects;
+            var modelData = quizListData;
             var htmlData;
             var template;
             var tempFunc;

@@ -60,6 +60,7 @@ body {
 	overflow:auto;
 }
 .quizListPanel {
+	min-height: 25em;
 	width: 8em;
 	display: inline-block;
 	/*overflow-y: scroll;*/
