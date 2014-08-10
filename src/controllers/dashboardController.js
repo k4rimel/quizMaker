@@ -33,7 +33,6 @@ DashboardController.prototype.getThemeList = function () {
 DashboardController.prototype.loadThemes = function () {
 	var model = DashboardModel.find(arguments);
 	var view = new DashboardView(model);
-
 	view.render();
 };
 DashboardController.prototype.destroy = function () {
