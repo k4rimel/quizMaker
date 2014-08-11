@@ -97,12 +97,14 @@
                 quizObjects.push(that.quizList.Quizzes[key]);
             };
 
-            return quizObjects;
+            return that.quizList;
         };
         QuizEditor.prototype.getEditorTemplate = function() {
             var quizListData = that.orderQuizzes();
 
-            var modelData = quizListData;
+            var modelData = that.quizList;
+            // DISPLAY QUIZZES
+            console.log(that.quizList);
             var htmlData;
             var template;
             var tempFunc;

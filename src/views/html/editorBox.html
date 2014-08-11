@@ -1,9 +1,9 @@
 <div class="editorFrame box">
 	<div class="titleBar">
-		<h1>{{=it.them}}</h1>
+		<h1>{{=it.Theme.label}}</h1>
 	</div>
 	<div class="quizListPanel">
-	{{~it :value:index}}
+	{{~it.Quizzes :value:index}}
 		<div class='quizListItem'>
 			<div class="quiz">
 				<div class="quizLink" data-quiz-id="{{=value.Quiz.id}}">{{=value.Quiz.title}}</div>
