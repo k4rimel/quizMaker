@@ -23,7 +23,6 @@ DashboardController.prototype.getThemeList = function () {
   		async: false,
   		data: data,
   		success: function(response){
-  			console.log(response);
 		 	themeFiles = JSON.parse(response);
   		},
   		error: function(xhr, type){

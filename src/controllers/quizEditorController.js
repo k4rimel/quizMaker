@@ -27,10 +27,11 @@
 
         QuizEditor.prototype.setQuizList = function(names, cb) {
             var fileNames = names.split(',');
+            that.quizList.Quizzes = [];
+            that.quizList.Theme = that.theme;
             for (var i = fileNames.length - 1; i >= 0; i--) {
                 var quiz = that.getQuiz(fileNames[i]);
-                // that.quizList.push();
-                that.quizList[quiz.Quiz.id] = quiz;
+                that.quizList.Quizzes[quiz.Quiz.id] = quiz;
             };
         };
         QuizEditor.prototype.getQuiz = function(fileName) {
@@ -83,18 +84,19 @@
         };
         QuizEditor.prototype.orderQuizzes = function() {
             var quizObjects = [];
-            Object.keys(that.quizList).forEach(function (key) {
-                for (var i = that.quizList[key].Quiz.Questions.length - 1; i >= 0; i--) {
-                    var props = that.quizList[key].Quiz.Questions[i].propositions.split(',');
+            for(key in that.quizList.Quizzes) {
+                for (var i = that.quizList.Quizzes[key].Quiz.Questions.length - 1; i >= 0; i--) {
+                    var props = that.quizList.Quizzes[key].Quiz.Questions[i].propositions.split(',');
                     for (var j = props.length - 1; j >= 0; j--) {
-                        if(props[j] == that.quizList[key].Quiz.Questions[i].correctAnswer) {
+                        if(props[j] == that.quizList.Quizzes[key].Quiz.Questions[i].correctAnswer) {
                             props[j] = "*"+props[j];
                         }
                     };
-                    that.quizList[key].Quiz.Questions[i].propositions = props.join(",");
+                    that.quizList.Quizzes[key].Quiz.Questions[i].propositions = props.join(",");
                 };
-                quizObjects.push(that.quizList[key]);
-            });
+                quizObjects.push(that.quizList.Quizzes[key]);
+            };
+
             return quizObjects;
         };
         QuizEditor.prototype.getEditorTemplate = function() {
@@ -127,7 +129,6 @@
         };
         QuizEditor.prototype.getRightPanelTemplate = function() {
             var modelData = that.selectedQuiz;
-            console.log(that.selectedQuiz);
             var htmlData;
             var template;
             var tempFunc;
@@ -155,7 +156,7 @@
         QuizEditor.prototype.setRightPanelHandlers = function()
         {
             $(".question").click(function(event) {
-                
+
             });
         };
         QuizEditor.prototype.setMainHandlers = function()
@@ -164,14 +165,14 @@
                 $('.quizListItem').removeClass('selected');
                 $(this).addClass('selected');
                 var quizId = $(this).children('.quiz').children('.quizLink').attr('data-quiz-id');
-                that.selectedQuiz = that.quizList[quizId];
+                that.selectedQuiz = that.quizList.Quizzes[quizId];
                 that.displayQuestions(that.rightPanelContainer);
             });
         };
         QuizEditor.prototype.updateList = function()
         {
 
-        }        
+        }
         QuizEditor.prototype.saveFile = function()
         {
 
