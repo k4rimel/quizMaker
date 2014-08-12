@@ -1,15 +1,20 @@
 <div class="editorFrame box">
 	<div class="titleBar">
-		<h1>{{=it.Theme.label}}</h1>
+		<div class="titleLabel">{{=it.Theme.label}}</div>
+		<div class="controls">
+			<div class="addQuiz smallBtn"></div>	
+		</div>
 	</div>
 	<div class="quizListPanel">
 	{{~it.Quizzes :value:index}}
-		<div class='quizListItem'>
-			<div class="quiz">
-				<div class="quizLink" data-quiz-id="{{=value.Quiz.id}}">{{=value.Quiz.title}}</div>
-				<div class="questionNB">{{=value.Quiz.Questions.length}} {{=(value.Quiz.Questions.length === 1 ? "Question" : "Questions")}}</div>
+		{{? value }}
+			<div class='quizListItem'>
+				<div class="quiz">
+					<div class="quizLink" data-quiz-id="{{=value.Quiz.id}}">{{=value.Quiz.title}}</div>
+					<div class="questionNB">{{=value.Quiz.Questions.length}} {{=(value.Quiz.Questions.length === 1 ? "Question" : "Questions")}}</div>
+				</div>
 			</div>
-		</div>
+		{{?}}	
 	{{~}}
 	</div>
 	<div class="editSection"></div>

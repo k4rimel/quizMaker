@@ -82,8 +82,7 @@
                 cb();
             }
         };
-        QuizEditor.prototype.orderQuizzes = function() {
-            var quizObjects = [];
+        QuizEditor.prototype.orderQuizList = function() {
             for(key in that.quizList.Quizzes) {
                 for (var i = that.quizList.Quizzes[key].Quiz.Questions.length - 1; i >= 0; i--) {
                     var props = that.quizList.Quizzes[key].Quiz.Questions[i].propositions.split(',');
@@ -94,17 +93,11 @@
                     };
                     that.quizList.Quizzes[key].Quiz.Questions[i].propositions = props.join(",");
                 };
-                quizObjects.push(that.quizList.Quizzes[key]);
             };
-
-            return that.quizList;
         };
         QuizEditor.prototype.getEditorTemplate = function() {
-            var quizListData = that.orderQuizzes();
-
+            that.orderQuizList();
             var modelData = that.quizList;
-            // DISPLAY QUIZZES
-            console.log(that.quizList);
             var htmlData;
             var template;
             var tempFunc;
