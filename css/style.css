@@ -73,7 +73,7 @@ body {
 }
 .quizListItem {
 	color:#666;
-	padding: .5em; 
+	padding: .5em;
 	margin: .5em;
 	cursor: pointer;
 }
@@ -81,13 +81,14 @@ body {
 	background-color: #e0e0e0;
 }
 .editSection {
-	min-height: 25em;
+	min-height: 24.5em;
 	display: block;
 	float: right;
 	background-color: #f2f2f2;
 	/*padding: 1em;*/
-	width: 36em;
+	width: 35.5em;
 	text-align: center;
+	padding: .5em;
 }
 .col {
 	display: inline-block;
@@ -159,7 +160,7 @@ body {
 	padding: 0.2em 0em;
 }
 .titleTxt:hover, .titleTxt:focus {
-	border: 1px dotted #90B7FA;
+	border: 1px dashed #90B7FA;
 }
 textarea {
 	padding: 0;
@@ -241,4 +242,20 @@ textarea:focus {
 	height: 2.5em;
 	background-color: #55AA55;
 	display: block;
+	cursor: pointer;
+}
+.smallBtn:hover{
+	background-color: #84CA84;
+}
+.question {
+
+}
+.question:hover {
+	border: dashed 1px #afafaf;
+}
+.question:focus {
+
+}
+h1 {
+	text-align: left;
 }
