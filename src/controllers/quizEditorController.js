@@ -50,17 +50,14 @@
                 });
             return quiz;
         }
-        QuizEditor.prototype.launch = function()
-        {
+        QuizEditor.prototype.launch = function() {
             that.container = $(".mainContainer");
             that.displayQuizList();
         };
-        QuizEditor.prototype.hide = function()
-        {
-            // fade or slide
+        QuizEditor.prototype.hide = function() {
+            that.container.addClass('hidden');
         }
         QuizEditor.prototype.show = function() {
-            // fade/slide
             that.container.removeClass('hidden');
         }
         QuizEditor.prototype.displayQuizList = function() {
@@ -150,9 +147,7 @@
 
         QuizEditor.prototype.setRightPanelHandlers = function()
         {
-            $(".question").click(function(event) {
-
-            });
+            // DElETE QUESTION
         };
         QuizEditor.prototype.setMainHandlers = function()
         {
@@ -162,6 +157,9 @@
                 var quizId = $(this).children('.quiz').children('.quizLink').attr('data-quiz-id');
                 that.selectedQuiz = that.quizList.Quizzes[quizId];
                 that.displayQuestions(that.rightPanelContainer);
+            });
+            $('.backToThemesButton').click(function(event) {
+                Core.go('Dashboard');
             });
         };
         QuizEditor.prototype.updateList = function()

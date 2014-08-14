@@ -1,5 +1,6 @@
 var DashboardView = function ( model ) {
 	var that = this;
+	that.container =
 	that.model = model;
 
 	return that;
@@ -37,6 +38,7 @@ DashboardView.prototype.render = function () {
 	var container = $(".mainContainer");
 	container.html(outputValue);
 	this.setHandlers();
+	container.removeClass('hidden');
 };
 
 DashboardView.prototype.setHandlers = function() {
