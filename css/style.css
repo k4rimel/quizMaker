@@ -166,7 +166,7 @@ body {
 	/*1px dashed #90B7FA;*/
 }
 textarea {
-	padding: 5px 0 0 8px;
+	padding: 5px 0px;
 	width: 90%;
 	line-height: inherit;
 	font-size: inherit;
