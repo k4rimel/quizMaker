@@ -161,7 +161,14 @@
             $('.backToThemesButton').click(function(event) {
                 Core.go('Dashboard');
             });
+            $('.addQuiz').click(function(event) {
+
+                that.createNewQuiz();
+            });
         };
+        QuizEditor.prototype.createNewQuiz = function(){
+            // generate json and call updateList
+        }
         QuizEditor.prototype.updateList = function()
         {
 
