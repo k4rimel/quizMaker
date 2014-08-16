@@ -10,6 +10,7 @@
     that.selectedQuiz        = null;
     that.theme               = null;
     that.quizList            = [];
+    that.quizTemplate        = null;
 
 
         if(QuizEditor.prototype.initializer === true) return;
@@ -162,11 +163,43 @@
                 Core.go('Dashboard');
             });
             $('.addQuiz').click(function(event) {
-
-                that.createNewQuiz();
+                if(that.createNewQuiz()) {
+                    that.updateList();
+                }
             });
         };
+        QuizEditor.prototype.setQuizTemplate = function(){
+            $.ajax({
+                type: 'GET',
+                url: 'data/quizTemplate.json',
+                dataType: 'json',
+                async: false,
+                success: function(data){
+                    that.quizTemplate = data;
+                },
+                error: function(xhr, type){
+                    console.log("error");
+                }
+            });
+        }
         QuizEditor.prototype.createNewQuiz = function(){
+            that.setQuizTemplate();
+            var data = {"path":"data/",
+                        "data":that.quizTemplate};
+            var isCreated = false;
+            $.ajax({
+                type: 'GET',
+                url: 'data/',
+                data: data,
+                async: false,
+                success: function(resp){
+                    isCreated = resp;
+                },
+                error: function(xhr, type, data){
+                    alert("error");
+                }
+            });
+            return isCreated;
             // generate json and call updateList
         }
         QuizEditor.prototype.updateList = function()
