@@ -4,16 +4,6 @@
         "id" : "1",
         "title": "Quiz A",
         "difficulty" : "p1",
-        "Questions": [ {
-                "label": "What's your name ?",
-                "propositions": "Karim,Jean-Jacques,Firmain,Martin",
-                "correctAnswer": "Karim"
-            },
-            {
-                "label": "How old are you ?",
-                "propositions":"18,23,45,1000",
-                "correctAnswer": "23"
-            }
-        ]
+        "Questions": []
     }
 }
