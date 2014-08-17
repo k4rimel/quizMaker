@@ -153,6 +153,7 @@
         QuizEditor.prototype.setMainHandlers = function()
         {
             $('.quizListItem').click(function(event) {
+                $('.listControls').children().removeClass('disabled');
                 $('.quizListItem').removeClass('selected');
                 $(this).addClass('selected');
                 var quizId = $(this).children('.quiz').children('.quizLink').attr('data-quiz-id');

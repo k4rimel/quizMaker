@@ -277,3 +277,27 @@ h1 {
 .backToThemesButton:hover{
 	text-decoration: underline;
 }
+.addQuestionButton {
+	cursor: pointer;
+	width: 6em;
+	height: 1.5em;
+	line-height: 1.5em;
+	padding: 0.5em;
+	background: linear-gradient(to top, #CF482E, #E95D3E);
+}
+.addQuestionButton:hover {
+	background: #E46A54;
+}
+.listControls {
+	text-align: center;
+	height: 2.5em;
+	border-bottom: 1px solid #ccc;
+	padding: 0.5em;
+}
+.disabled {
+	cursor: default;
+	background: #cccccc;
+}
+.disabled:hover {
+	background: #cccccc;
+}
