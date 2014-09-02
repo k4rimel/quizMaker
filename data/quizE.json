@@ -1,5 +1,6 @@
 {
     "Quiz": {
+        "path": "data/quizE.json",
         "description" : "Quiz A bla bla bla",
         "id" : "5",
         "title": "Quiz E",

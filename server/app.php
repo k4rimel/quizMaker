@@ -21,13 +21,11 @@
 
 
 	function saveFile() {
-		$path = $_GET['path'];
-		$data = $_GET['data'];
+		$jsondata = json_decode($_GET['data']);
+		$data = $jsondata['quizData'];
+		$path = $jsondata['path'];
 		$success = false;
 		if(isset($path) && isset($data)) {
-			$path = $_GET['path'];
-			$data = $_GET['data'];
-			// TEST HERE
 			$fp = fopen($path, 'w');
 			if(fwrite($fp, json_encode($data))) {
 				$success = true;

@@ -32,6 +32,7 @@
             that.quizList.Theme = that.theme;
             for (var i = fileNames.length - 1; i >= 0; i--) {
                 var quiz = that.getQuiz(fileNames[i]);
+                quiz.flag = false;
                 that.quizList.Quizzes[quiz.Quiz.id] = quiz;
             };
         };
@@ -101,8 +102,6 @@
             var tempFunc;
             var html;
 
-            // modelData.currentQuestionIndex = that.currentIndex + 1;
-            // modelData.nbQuestions = that.quiz.Questions.length;
             $.ajax({
                 type: 'GET',
                 url: 'src/views/html/editorBox.html',
@@ -145,13 +144,30 @@
             });
             return html
         };
-
+        // TODO : PLACE IN UTILS
+        QuizEditor.prototype.isObj = function(obj) {
+                return obj === Object(obj);
+        }
+        QuizEditor.prototype.saveQuizList = function()
+        {
+            var list = that.quizList.Quizzes;
+            console.log(list);
+            for (var i = list.length - 1; i >= 0; i--) {
+                if(that.isObj(list[i]) && list[i].flag === false) {
+                    that.saveFile(list[i]);
+                }
+            };
+        }
         QuizEditor.prototype.setRightPanelHandlers = function()
         {
             // DElETE QUESTION
         };
         QuizEditor.prototype.setMainHandlers = function()
         {
+            Core.subscribe('SAVE_ALL_DATA', function() {
+               console.log('SAVE_ALL_DATA');
+               that.saveQuizList();
+            });
             $('.quizListItem').click(function(event) {
                 $('.listControls').children().removeClass('disabled');
                 $('.quizListItem').removeClass('selected');
@@ -162,6 +178,7 @@
             });
             $('.backToThemesButton').click(function(event) {
                 Core.go('Dashboard');
+                Core.publish('SAVE_ALL_DATA');
             });
             $('.addQuiz').click(function(event) {
                 if(that.createNewQuiz()) {
@@ -207,9 +224,22 @@
         {
 
         }
-        QuizEditor.prototype.saveFile = function()
+        QuizEditor.prototype.saveFile = function(quizData)
         {
-
+            var data = {quiz:quizData};
+            $.ajax({
+                url: '../server/save.php',
+                type: 'POST',
+                dataType: 'json',
+                data: data,
+            })
+            .done(function(resp) {
+                console.log("success");
+            })
+            .fail(function() {
+                console.log("error");
+            });
+            // TODO HANDLE AJAX ERRORS
         };
         QuizEditor.prototype.unsetHandlers = function()
         {
