@@ -1,5 +1,5 @@
 <?php
-	$request = $_GET[reqtype];
+	$request = $_GET['reqtype'];
 	$data = $_GET['data'];
 
 

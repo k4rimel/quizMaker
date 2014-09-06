@@ -1,28 +1,23 @@
 <?php
-
-	$reqtype = $_GET['reqtype'];
-
-	if(isset($reqtype)) {
-
+	if(isset($_GET['reqtype'])){
 		$reqtype = $_GET['reqtype'];
-
-		switch ($reqtype) {
-		case 'read':
-			sendFolderScan();
-			break;
-		case 'save':
-			saveFile();
-			break;
-		default:
-			handleUnknownQuery();
-			break;
+		if($reqtype) {
+			switch ($reqtype) {
+			case 'read':
+				sendFolderScan();
+				break;
+			case 'save':
+				saveFile();
+				break;
+			default:
+				handleUnknownQuery();
+				break;
+			}
 		}
 	}
-
-
 	function saveFile() {
-		$jsondata = json_decode($_GET['data']);
-		$data = $jsondata['quizData'];
+		$jsondata = json_decode($_GET['quizData']);
+		$data = $jsondata;
 		$path = $jsondata['path'];
 		$success = false;
 		if(isset($path) && isset($data)) {
@@ -32,7 +27,7 @@
 			}
 			fclose($fp);
 		}
-		return $success;
+		echo json_encode($success);
 	}
 	function sendFolderScan() {
 		$files = array();

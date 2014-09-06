@@ -151,7 +151,6 @@
         QuizEditor.prototype.saveQuizList = function()
         {
             var list = that.quizList.Quizzes;
-            console.log(list);
             for (var i = list.length - 1; i >= 0; i--) {
                 if(that.isObj(list[i]) && list[i].flag === false) {
                     that.saveFile(list[i]);
@@ -226,18 +225,21 @@
         }
         QuizEditor.prototype.saveFile = function(quizData)
         {
-            var data = {quiz:quizData};
+            var data = {reqtype : 'save',
+                        quiz : quizData};
             $.ajax({
-                url: '../server/save.php',
+                url: '../server/app.php',
                 type: 'POST',
                 dataType: 'json',
                 data: data,
-            })
-            .done(function(resp) {
-                console.log("success");
-            })
-            .fail(function() {
-                console.log("error");
+                async: false,
+                success: function(resp){
+                    console.log("success");
+                    console.log(resp);
+                },
+                error: function(xhr, type, data){
+                    console.log("error");
+                }
             });
             // TODO HANDLE AJAX ERRORS
         };
