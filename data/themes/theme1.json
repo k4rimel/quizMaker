@@ -1,7 +1,11 @@
 {
 	"Theme":{
-		"label": "Theme 1",
-		"id": "1",
-		"quizzes": "quizA,quizB"
+		"label":"Theme 1",
+		"id":"1",
+		"path" :"../data/themes/theme2.json",
+		"quizzes":[{"id":"1",
+					"fileName":"quizA.json"},
+					{"id":"2",
+					"fileName":"quizB.json"}]
 	}
 }

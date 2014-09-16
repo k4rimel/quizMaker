@@ -227,7 +227,7 @@ textarea:focus {
 	min-width: 50%;
 	font-size: 2em;
 	font-family: 'roboto';
-	color: #669999;
+	color: #555;
 	display: block;
 	float: left;
 }

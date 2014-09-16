@@ -26,8 +26,12 @@
             }
         };
 
-        QuizEditor.prototype.setQuizList = function(names, cb) {
-            var fileNames = names.split(',');
+        QuizEditor.prototype.setQuizList = function(quizzes, cb) {
+            var themeQuizzes = quizzes;
+            var fileNames = [];
+            for (var i = themeQuizzes.length - 1; i >= 0; i--) {
+                fileNames.push(themeQuizzes[i].fileName);
+            };
             that.quizList.Quizzes = [];
             that.quizList.Theme = that.theme;
             for (var i = fileNames.length - 1; i >= 0; i--) {
@@ -40,7 +44,7 @@
             var quiz;
                 $.ajax({
                     type: 'GET',
-                    url: 'data/'+fileName+'.json',
+                    url: 'data/'+fileName,
                     dataType: 'json',
                     async: false,
                     success: function(data){
@@ -146,8 +150,11 @@
         };
         // TODO : PLACE IN UTILS
         QuizEditor.prototype.isObj = function(obj) {
-                return obj === Object(obj);
+            return obj === Object(obj);
         }
+        QuizEditor.prototype.uId = function () {
+            return Math.random().toString(36).substr(2, 9);
+        };
         QuizEditor.prototype.saveQuizList = function()
         {
             var list = that.quizList.Quizzes;
@@ -200,45 +207,69 @@
             });
         }
         QuizEditor.prototype.createNewQuiz = function(){
-            that.setQuizTemplate();
-            var data = {"path":"data/",
-                        "data":that.quizTemplate};
-            var isCreated = false;
-            $.ajax({
-                type: 'GET',
-                url: 'data/',
-                data: data,
-                async: false,
-                success: function(resp){
-                    isCreated = resp;
-                },
-                error: function(xhr, type, data){
-                    alert("error");
-                }
-            });
-            return isCreated;
+
+            if(that.quizTemplate === null) {
+                that.setQuizTemplate();
+            }
+            console.log(that.quizTemplate);
+            var newId = that.uId();
+            var filename = "quiz_"+newId+".json";
+            var path = "../data/"+filename;
+            var data = that.quizTemplate;
+
+            that.saveFile(data, path);
+            that.editTheme(newId, filename);
+
             // generate json and call updateList
+        }
+        QuizEditor.prototype.editTheme = function() {
+            if(arguments.length > 1) {
+                var quizId = arguments[0];
+                var quizFileName = arguments[1];
+
+                var newQuiz = {"id":quizId,
+                               "fileName":quizFileName};
+                that.theme.quizzes.push(newQuiz);
+            }
+            else {
+                var id = arguments[0];
+                var themeQuizzes = that.theme.quizzes;
+                var newQuizTab;
+                for (var i = themeQuizzes.length - 1; i >= 0; i--) {
+                    if(themeQuizzes[i].id === id) {
+                        that.theme.quizzes.indexOf(i, 1);
+                    }
+                };
+            }
+            that.saveTheme();
+        }
+        QuizEditor.prototype.saveTheme = function() {
+            that.saveFile(that.theme, that.theme.path);
         }
         QuizEditor.prototype.updateList = function()
         {
-
+            console.log('update list');
         }
-        QuizEditor.prototype.saveFile = function(quizData)
+        QuizEditor.prototype.saveFile = function(data, filePath)
         {
-            var data = {reqtype : 'save',
-                        quiz : quizData};
+            var reqData = {"reqtype" : "save",
+                        "data" : data,
+                        "path" : filePath};
+
+            var isSuccessful = false;
             $.ajax({
-                url: '../server/app.php',
                 type: 'POST',
-                dataType: 'json',
-                data: data,
+                url: 'server/app.php',
+                data: reqData,
                 async: false,
                 success: function(resp){
-                    console.log("success");
                     console.log(resp);
+                    // isSuccessful = resp != 0 ? true : false;
+                    // console.log(isSuccessful);
                 },
                 error: function(xhr, type, data){
-                    console.log("error");
+                    console.log(xhr);
+                    alert("error");
                 }
             });
             // TODO HANDLE AJAX ERRORS
