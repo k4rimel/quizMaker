@@ -206,19 +206,24 @@
                 }
             });
         }
+        QuizEditor.prototype.getMaxQuizId = function(){
+            return parseInt(that.quizList.Quizzes[that.quizList.Quizzes.length-1].Quiz.id) + 1;
+        }
         QuizEditor.prototype.createNewQuiz = function(){
 
             if(that.quizTemplate === null) {
                 that.setQuizTemplate();
             }
-            console.log(that.quizTemplate);
-            var newId = that.uId();
-            var filename = "quiz_"+newId+".json";
+            
+            var fileId = that.uId();
+            var filename = "quiz_"+fileId+".json";
             var path = "../data/"+filename;
             var data = that.quizTemplate;
+            var quizId = that.getMaxQuizId();
+            data.Quiz.id = quizId;
 
             that.saveFile(data, path);
-            that.editTheme(newId, filename);
+            that.editTheme(quizId, filename);
 
             // generate json and call updateList
         }
@@ -245,17 +250,17 @@
         }
         QuizEditor.prototype.saveTheme = function() {
             that.saveFile(that.theme, that.theme.path);
+            that.updateList();
         }
         QuizEditor.prototype.updateList = function()
         {
-            console.log('update list');
+            // UPDATE QUIZ LIST
         }
         QuizEditor.prototype.saveFile = function(data, filePath)
         {
             var reqData = {"reqtype" : "save",
                         "data" : data,
                         "path" : filePath};
-
             var isSuccessful = false;
             $.ajax({
                 type: 'POST',
@@ -263,9 +268,7 @@
                 data: reqData,
                 async: false,
                 success: function(resp){
-                    console.log(resp);
-                    // isSuccessful = resp != 0 ? true : false;
-                    // console.log(isSuccessful);
+                    isSuccessful = resp != 0 ? true : false;
                 },
                 error: function(xhr, type, data){
                     console.log(xhr);

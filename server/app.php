@@ -26,12 +26,15 @@
 		$success = false;
 		if(isset($path) && isset($data)) {
 			$fp = fopen($path, 'w');
+			if(isset($data['Quiz'])) {
+				$data['Quiz']['Questions'] = array();
+			}
 			if(fwrite($fp, json_format(json_encode($data)))) {
 				$success = true;
 			}
 			fclose($fp);
 		}
-		echo $path;
+		echo json_encode($data);
 	}
 	function sendFolderScan() {
 		$files = array();

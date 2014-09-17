@@ -8,12 +8,12 @@ var DashboardModel = function (data) {
 	this.getTheme = function(id) {
 		if(this.themes.length > 1) {
 			for (var i = 0; i < this.themes.length; i++) {
-				if(this.themes[i].Theme.id === id) {
-					return this.themes[i].Theme;
+				if(this.themes[i].id === id) {
+					return this.themes[i];
 				}
 			};
 		} else {
-			return this.themes[0].Theme;
+			return this.themes[0];
 		}
 	}
 	return this;

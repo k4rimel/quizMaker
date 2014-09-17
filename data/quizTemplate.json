@@ -1,0 +1,10 @@
+{
+    "Quiz": {
+    	"path": "data/quizTemplate.json",
+        "description" : "New Quiz",
+        "id" : "0",
+        "title": "Untitled quiz",
+        "difficulty" : "p1",
+        "Questions": []
+    }
+}
