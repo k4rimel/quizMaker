@@ -164,34 +164,7 @@
                 }
             };
         }
-        QuizEditor.prototype.setRightPanelHandlers = function()
-        {
-            // DElETE QUESTION
-        };
-        QuizEditor.prototype.setMainHandlers = function()
-        {
-            Core.subscribe('SAVE_ALL_DATA', function() {
-               console.log('SAVE_ALL_DATA');
-               that.saveQuizList();
-            });
-            $('.quizListItem').click(function(event) {
-                $('.listControls').children().removeClass('disabled');
-                $('.quizListItem').removeClass('selected');
-                $(this).addClass('selected');
-                var quizId = $(this).children('.quiz').children('.quizLink').attr('data-quiz-id');
-                that.selectedQuiz = that.quizList.Quizzes[quizId];
-                that.displayQuizContent(that.rightPanelContainer);
-            });
-            $('.backToThemesButton').click(function(event) {
-                Core.go('Dashboard');
-                Core.publish('SAVE_ALL_DATA');
-            });
-            $('.addQuiz').click(function(event) {
-                if(that.createNewQuiz()) {
-                    that.updateList();
-                }
-            });
-        };
+
         QuizEditor.prototype.setQuizTemplate = function(){
             $.ajax({
                 type: 'GET',
@@ -209,6 +182,9 @@
         QuizEditor.prototype.getMaxQuizId = function(){
             return parseInt(that.quizList.Quizzes[that.quizList.Quizzes.length-1].Quiz.id) + 1;
         }
+        QuizEditor.prototype.focus = function(quizId){
+
+        }
         QuizEditor.prototype.createNewQuiz = function(){
 
             if(that.quizTemplate === null) {
@@ -222,10 +198,9 @@
             var quizId = that.getMaxQuizId();
             data.Quiz.id = quizId;
 
-            that.saveFile(data, path);
-            that.editTheme(quizId, filename);
-
-            // generate json and call updateList
+            if(that.saveFile(data, path) && that.editTheme(quizId, filename)) {
+                that.updateList(data);
+            }
         }
         QuizEditor.prototype.editTheme = function() {
             if(arguments.length > 1) {
@@ -246,15 +221,15 @@
                     }
                 };
             }
-            that.saveTheme();
+            return that.saveTheme();
         }
         QuizEditor.prototype.saveTheme = function() {
-            that.saveFile(that.theme, that.theme.path);
-            that.updateList();
+            return that.saveFile(that.theme, that.theme.path);
         }
-        QuizEditor.prototype.updateList = function()
+        QuizEditor.prototype.updateList = function(quiz)
         {
-            // UPDATE QUIZ LIST
+            var container = $('.quizListPanel');
+            that.render();
         }
         QuizEditor.prototype.saveFile = function(data, filePath)
         {
@@ -275,7 +250,38 @@
                     alert("error");
                 }
             });
+            return isSuccessful;
             // TODO HANDLE AJAX ERRORS
+        };
+        QuizEditor.prototype.setRightPanelHandlers = function()
+        {
+            // DElETE QUESTION
+        };
+        QuizEditor.prototype.setMainHandlers = function()
+        {
+            Core.subscribe('SAVE_ALL_DATA', function() {
+               console.log('SAVE_ALL_DATA');
+               that.saveQuizList();
+            });
+            $('.quizListItem').click(function(event) {
+                // TODO : FOCUS METHOD
+                // get appended element in list and addclass 'selected'
+                $('.listControls').children().removeClass('disabled');
+                $('.quizListItem').removeClass('selected');
+                $(this).addClass('selected');
+                var quizId = $(this).children('.quiz').children('.quizLink').attr('data-quiz-id');
+                that.selectedQuiz = that.quizList.Quizzes[quizId];
+                that.displayQuizContent(that.rightPanelContainer);
+            });
+            $('.backToThemesButton').click(function(event) {
+                Core.go('Dashboard');
+                Core.publish('SAVE_ALL_DATA');
+            });
+            $('.addQuiz').click(function(event) {
+                if(that.createNewQuiz()) {
+                    that.updateList();
+                }
+            });
         };
         QuizEditor.prototype.unsetHandlers = function()
         {
