@@ -228,8 +228,10 @@
         }
         QuizEditor.prototype.updateList = function(quiz)
         {
+            // TODO REFACTOR CODE
+            console.log(quiz);
             var container = $('.quizListPanel');
-            that.render();
+            // that.render();
         }
         QuizEditor.prototype.saveFile = function(data, filePath)
         {

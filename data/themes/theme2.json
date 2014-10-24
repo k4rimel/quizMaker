@@ -1,7 +1,7 @@
 {
   "label": "Theme 2",
   "id": "2",
-  "path": "../data/themes/theme2.json",
+  "path": "..\/data\/themes\/theme2.json",
   "quizzes": [
     {
       "id": "1",
@@ -10,6 +10,10 @@
     {
       "id": "2",
       "fileName": "quizB.json"
+    },
+    {
+      "id": "3",
+      "fileName": "quiz_7dcc69t0d.json"
     }
   ]
 }
