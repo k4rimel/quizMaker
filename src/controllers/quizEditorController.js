@@ -190,7 +190,7 @@
             if(that.quizTemplate === null) {
                 that.setQuizTemplate();
             }
-            
+
             var fileId = that.uId();
             var filename = "quiz_"+fileId+".json";
             var path = "../data/"+filename;
@@ -266,7 +266,7 @@
             $('.quizListItem').click(function(event) {
                 // TODO : FOCUS METHOD
                 // get appended element in list and addclass 'selected'
-                $('.listControls').children().removeClass('disabled');
+                $('.removeSelectedQuiz').removeClass('disabled');
                 $('.quizListItem').removeClass('selected');
                 $(this).addClass('selected');
                 var quizId = $(this).children('.quiz').children('.quizLink').attr('data-quiz-id');

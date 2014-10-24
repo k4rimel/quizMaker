@@ -5,14 +5,12 @@
 	<div class="titleBar">
 		<div class="titleLabel">{{=it.Theme.label}}</div>
 		<div class="controls">
-			<div class="addQuiz smallBtn"><i class="fa fa-plus"></i> New Quiz</div>
+			<div class="removeSelectedQuiz smallBtn disabled"><i class="fa fa-trash-o"></i> Delete Quiz</div>
+			<div class="addQuiz smallBtn"><i class="fa fa-plus"></i> Quiz</div>
 		</div>
 	</div>
 	<div class="quizListPanel">
-		<div class="listControls">
-			<div class="removeSelectedQuiz listCtrlBtn disabled"><i class="fa fa-trash-o"></i> Delete Quiz</div>
-			<div class="addQuestionButton listCtrlBtn disabled"><i class="fa fa-plus"></i> Add Question</div>
-		</div>
+
 	{{~it.Quizzes :value:index}}
 		{{? value }}
 			<div class='quizListItem'>

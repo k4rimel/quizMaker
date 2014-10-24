@@ -238,15 +238,18 @@ textarea:focus {
 	/*width: 50%;*/
 }
 .smallBtn {
+	float: left;
 	padding:0 .5em;
 	line-height: 2.5em;
 	text-align: center;
+	margin-left: .2em;
 	color:#fff;
 	min-width: 5em;
 	height: 2.5em;
 	background-color: #55AA55;
 	display: block;
 	cursor: pointer;
+	font-family: "robotoBold";
 }
 .smallBtn:hover{
 	background-color: #84CA84;
@@ -280,18 +283,23 @@ h1 {
 }
 .listCtrlBtn {
 	text-indent: .2em;
-	text-align: left;
-	margin:.5em 0em;
+	text-align: center;
+	margin: 0em 0em .7em 0em;
 	cursor: pointer;
-	width: 7.7em;
+	width: 7.8em;
 	height: 2em;
-	line-height: 2em;
+	line-height: 3em;
+	float: right;
+	font-family: "robotoBold";
+}
+.listCtrlBtn:hover {
 }
 .addQuestionButton {
-	background: linear-gradient(to top, #FFA500, #FFB939);
+
+	color:#689DF6;
 }
 .addQuestionButton:hover {
-
+	color:#316FA7;
 }
 .removeSelectedQuiz {
 	background-color: #E46A54;
@@ -300,9 +308,7 @@ h1 {
 
 }
 .listControls {
-	text-align: center;
-	margin-bottom: 1em;
-	border-bottom: 1px solid #ccc;
+
 }
 .disabled {
 	cursor: default;

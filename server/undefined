@@ -1,0 +1,13 @@
+{
+  "Quiz": {
+    "path": "data\/quizA.json",
+    "description": "Quiz A bla bla bla",
+    "id": "1",
+    "title": "Quiz A",
+    "difficulty": "p1",
+    "Questions": [
+      
+    ]
+  },
+  "flag": "false"
+}
