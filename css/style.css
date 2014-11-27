@@ -252,7 +252,7 @@ textarea:focus {
 	font-family: "robotoBold";
 }
 .smallBtn:hover{
-	background-color: #84CA84;
+	
 }
 .question {
 
@@ -305,7 +305,10 @@ h1 {
 	background-color: #E46A54;
 }
 .removeSelectedQuiz:hover {
-
+	background-color: #F2AB9E;
+}
+.addQuiz:hover {
+	background-color: #84CA84;
 }
 .listControls {
 
